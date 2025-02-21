@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fuel Cost Calculator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      function calculateCost() {
+        let consumption =
+          parseFloat(document.getElementById("consumption").value) || 5.66;
+        let fuelPrice =
+          parseFloat(document.getElementById("fuelPrice").value) || 1.85;
+        let distance =
+          parseFloat(document.getElementById("distance").value) || 0;
+
+        let cost = (consumption / 100) * distance * fuelPrice;
+        document.getElementById("totalCost").value = cost.toFixed(2) + " €";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2 class="mb-4 text-center">Fuel Cost Calculator</h2>
+          <div class="mb-3">
+            <label for="consumption" class="form-label">Consumption</label>
+            <input
+              type="number"
+              id="consumption"
+              class="form-control"
+              placeholder="Liters per 100Klm"
+              value="5.66"
+              oninput="calculateCost()"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="fuelPrice" class="form-label">Fuel Price</label>
+            <input
+              type="number"
+              id="fuelPrice"
+              class="form-control"
+              placeholder="Price per Liter"
+              value="1.85"
+              oninput="calculateCost()"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="distance" class="form-label">Distance</label>
+            <input
+              type="number"
+              id="distance"
+              class="form-control"
+              placeholder="Distance in Klms"
+              value="0"
+              autofocus
+              oninput="calculateCost()"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Total Route Expenses</label>
+            <input
+              type="text"
+              id="totalCost"
+              class="form-control"
+              readonly
+              value="0.00 €"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
